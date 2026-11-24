@@ -457,7 +457,7 @@ class ConnectionToken(JMSOrgBaseModel):
             acls = CommandFilterACL.filter_queryset(**kwargs).valid()
             # Bound M2M prefetch batches; only review actions need reviewers.
             acls = list(acls.only(
-                'id', 'name', 'action', 'priority', 'is_active'
+                'id', 'name', 'action', 'priority', 'is_active', 'script_preflight_enabled'
             ).prefetch_related('command_groups').iterator(chunk_size=1000))
             review_acls = [acl for acl in acls if acl.action == ACLActionChoices.review]
             if review_acls:

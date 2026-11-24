@@ -110,7 +110,7 @@ class _ConnectionTokenCommandFilterACLSerializer(serializers.ModelSerializer):
         model = CommandFilterACL
         fields = [
             'id', 'name', 'command_groups', 'action',
-            'reviewers', 'priority', 'is_active'
+            'reviewers', 'priority', 'is_active', 'script_preflight_enabled'
         ]
 
     @staticmethod

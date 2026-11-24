@@ -93,6 +93,10 @@ class CommandGroup(JMSOrgBaseModel):
 
 
 class CommandFilterACL(UserAssetAccountBaseACL):
+    script_preflight_enabled = models.BooleanField(
+        default=False, verbose_name=_('Enable Agent script preflight'),
+        help_text=_('Apply this rejection rule to commands inside Bash scripts in Linux SSH sessions.'),
+    )
     workflow = models.ForeignKey(
         'tickets.Workflow', null=True, blank=True, on_delete=models.PROTECT,
         related_name='+', verbose_name=_('Workflow'),
